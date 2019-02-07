@@ -1,0 +1,12 @@
+body{
+  background-image: url('./bg.jpg');
+  background-repeat: no-repeat;
+  background-position: center center;
+  background-attachment: fixed;
+  background-size: cover;
+}
+.margin {margin: 0.3em;}
+.space {
+  margin-top: 5%;
+}
+
