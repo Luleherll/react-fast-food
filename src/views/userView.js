@@ -1,13 +1,13 @@
 import React from 'react';
 import {connect} from 'react-redux';
-import * as AllActions from '../actions/Thunks';
+import * as AllActions from '../redux/Thunks';
 import { bindActionCreators } from 'redux';
 import Header from '../components/common/Header';
 import AdminDashboard from '../components/admin';
 import UserDashboard from '../components/customer';
 
 
-class UserView extends React.Component{
+export class UserView extends React.Component{
     state = {
       nav : {
         navItem1: {name: 'menu', action: ()=>this.displayPage('foodItems', 'foodItems')},
@@ -41,7 +41,6 @@ class UserView extends React.Component{
       switch (pathname) {
         case 'admin':
           return(
-            
             <AdminDashboard {...adminProps}/>
           );
 
