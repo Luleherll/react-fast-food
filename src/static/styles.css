@@ -9,4 +9,9 @@ body{
 .space {
   margin-top: 5%;
 }
+input{
+  color: white;
+  font-size: 70%;
+  text-align: center;
+}
 
