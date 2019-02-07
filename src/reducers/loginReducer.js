@@ -10,6 +10,11 @@ export default (state = {}, action) =>{
             localStorage.setItem('user', action.data.token)
             localStorage.setItem('Admin', action.data.Admin)
             return state
+
+        case types.SIGNUP:
+            notify(action.data, 'success')
+            return state
+
         
         case types.ERROR_OCCURRED:
             return {
