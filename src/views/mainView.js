@@ -66,6 +66,14 @@ export class HomeView extends React.Component {
       }
     }, 5000);
   }
+    signupForm = () =>{
+      const {isLogin, inputName, formName} = this.state;
+      this.setState({
+        isLogin: !isLogin,
+        inputName: inputName === 'tel' ? 'username' : 'tel',
+        formName: formName === 'Create Account' ? 'SignIn': 'Create Account',
+      });
+    }
 
     handleSubmit = e =>{
       e.preventDefault();
@@ -94,7 +102,7 @@ export class HomeView extends React.Component {
           <Main {...props}/>
           <div className="row">
             <div className="input-field col offset-s2">
-              <button className="waves-effect waves-light btn-large amber darken-3">
+              <button className="waves-effect waves-light btn-large amber darken-3" onClick={this.signupForm}>
                 {formName}
               </button>
             </div>
