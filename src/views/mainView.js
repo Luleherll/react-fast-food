@@ -2,7 +2,8 @@ import React from 'react';
 import {connect} from 'react-redux';
 import * as AllActions from '../actions/Thunks';
 import { bindActionCreators } from 'redux';
-import M from 'materialize-css';
+import 'msg-notify/dist/notify.css';
+import notify from 'msg-notify';
 import Main from '../components/main';
 import { getAllNewOrders, getAllPendingOrders, getArchivedOrders } from '../actions/AllOrdersActions';
 import { login, signUp, getMenu, pendingOrders, orderHistory } from '../actions/UserActions';
@@ -21,7 +22,7 @@ export class HomeView extends React.Component {
     }
 
     // componentDidMount(){
-    //   const user = localStorage.getItem('user');
+    //   const user = localStorage.getItem('user')
     //   if(user){
     //     this.getUserData();
     //   }
@@ -34,14 +35,14 @@ export class HomeView extends React.Component {
     const {getDataThunk} = this.props.actions;
     let data;
     let url;
-    if (admin==='true') {
+    if (admin) {
       data = [
         {url: 'orders/', action:getAllNewOrders},
         {url: 'orders/pending', action: getAllPendingOrders},
         {url: 'orders/archive', action:getArchivedOrders}
       ];
       url = '/admin';
-    }else if(admin==='false'){
+    } else {
       data = [
         {url: 'menu', action: getMenu},
         {url: 'users/orders', action: pendingOrders},
@@ -57,13 +58,12 @@ export class HomeView extends React.Component {
     e.preventDefault();
     this.setState({[param]: e.target.value });};
   signIn = (url, data, actionCreator) => {
-    const { actions: { postDataThunk }} = this.props;
+    const { error, actions: { postDataThunk }} = this.props;
     postDataThunk(url, data, actionCreator, 'post'); 
     setTimeout(() => {
-      const error = localStorage.getItem('error');
       if(!error){
         this.getUserData();
-      }else{M.toast({html: error});}
+      }
     }, 5000);
   }
     signupForm = () =>{
@@ -78,16 +78,16 @@ export class HomeView extends React.Component {
     handleSubmit = e =>{
       e.preventDefault();
       const {isLogin, email, key_point, location, tel, username,password} = this.state;
+      const { error } = this.props;
       
       if(!isLogin){
         const data = {email, 'key point': key_point, location, tel, username, password};
         this.signIn('auth/signup', data, signUp );
       }
       setTimeout(() => {
-        const error = localStorage.getItem('error');
         if(!error){
           this.signIn('auth/login', {username, password}, login );
-        }else{M.toast({html: error, classes: 'red'});}
+        }
       }, 3000);
     }
     render () {
@@ -97,9 +97,8 @@ export class HomeView extends React.Component {
         handleSubmit: this.handleSubmit, 
         handleChange: this.handleChange,
       };
-      localStorage.clear();
       return (
-        <div id="home">
+        <div>
           <Main {...props}/>
           <div className="row">
             <div className="input-field col offset-s2">
@@ -114,7 +113,7 @@ export class HomeView extends React.Component {
     }
 }
 
-const mapStateToProps = ()=>{};
+const mapStateToProps = ({ user: { error }}) =>({error});
 const mapDispatchToProps = dispatch => ({actions: bindActionCreators(AllActions, dispatch)});
 
 export default connect(mapStateToProps, mapDispatchToProps)(HomeView);
