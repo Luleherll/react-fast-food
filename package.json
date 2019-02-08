@@ -8,7 +8,7 @@
   "license": "MIT",
   "private": false,
   "scripts": {
-    "start": "webpack-dev-server",
+    "start": "cross-env node server",
     "webpack": "webpack -wd"
   },
   "devDependencies": {
