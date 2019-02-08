@@ -12,7 +12,7 @@ export default () => (
         <BrowserRouter>
           <Switch>
             <Route path="/" component={HomeView} exact />
-            <Route path="/admin" component={UserView} />
+            <Route path="/:route" component={UserView} />
           </Switch>
         </BrowserRouter>
       </Provider>
