@@ -9,7 +9,7 @@ export default class extends React.Component{
   }
 
   UNSAFE_componentWillMount(){
-    this.viewOrder(this.props.order.status);
+    this.viewOrder(this.props.order.status)
   }
 
   viewOrder  = status =>{
@@ -67,34 +67,34 @@ export default class extends React.Component{
     
     const {btnName1, btnName2, data1, data2, classNames1, classNames2, dateProp} = this.state;
     return(
-      <li>
-        <div className="collapsible-header hoverable tooltipped" data-position="bottom" data-tooltip="I am a tooltip">
-          <div className='center-align'>
-            <img src={img1} alt="" className="circle"/>
-          </div>
-          <div>
-            <span className="grey">{quantity} {name}</span>
-            <div>From: {location} </div>
-            <div> Amount: {amount} </div>
-            
-            <div> {dateProp}: <span id="date">{ended_at || created_at}</span></div>
+      <div className="col s12 m8 offset-m2 l6 offset-l3">
+        <div className="card-panel grey lighten-5 z-depth-1">
+          <div className="row valign-wrapper">
+            <div className="col s2">
+              <img src={img1} alt="" className="circle responsive-img" />
+            </div>
+            <div className="col s10">
+              <span className="grey">{quantity} {name}</span>
+              <div> {dateProp}: <span id="date">{ended_at || created_at}</span></div>
+              <div>From: {location} </div>
+              <div> Amount: {amount} </div>
+              <div></div>
+              <button
+                id="accept"
+                className={classNames1}
+                onClick={()=>handleClick(data1)}>
+                {btnName1}
+              </button>
+              <button
+                id="decline"
+                className={classNames2}
+                onClick={()=>handleClick(data2)}>
+                {btnName2}
+              </button>
+            </div>
           </div>
         </div>
-        <div className="collapsible-body center-align">
-          <button
-            id="accept"
-            className={classNames1}
-            onClick={()=>handleClick(data1)}>
-            {btnName1}
-          </button>
-          <button
-            id="decline"
-            className={classNames2}
-            onClick={()=>handleClick(data2)}>
-            {btnName2}
-          </button>
-        </div>
-      </li>
+      </div>
         
     );
   }
