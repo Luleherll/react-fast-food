@@ -33,6 +33,7 @@ describe('mainView', () => {
   });
   storage.forEach(addKey => {
     it('should ', () => {
+      localStorage.setItem('error', 'undefined');
       addKey();
       wrapper = mount(<HomeView {...props} />);
       jest.spyOn(wrapper.instance(), 'handleSubmit');

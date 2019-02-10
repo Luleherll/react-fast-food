@@ -8,12 +8,12 @@ import UserView from './views/userView';
 const store = configureStore();
 
 export default () => (
-    <Provider store={store}>
-        <BrowserRouter>
-          <Switch>
-            <Route path="/" component={HomeView} exact />
-            <Route path="/:route" component={UserView} />
-          </Switch>
-        </BrowserRouter>
-      </Provider>
-    )
+  <Provider store={store}>
+    <BrowserRouter>
+      <Switch>
+        <Route path="/" component={HomeView} exact />
+        <Route path="/:route" component={UserView} />
+      </Switch>
+    </BrowserRouter>
+  </Provider>
+);
