@@ -1,11 +1,11 @@
 import React from 'react';
 import {connect} from 'react-redux';
-import * as AllActions from '../redux/Thunks';
+import * as AllActions from '../actions/Thunks';
 import { bindActionCreators } from 'redux';
 import M from 'materialize-css';
 import Main from '../components/main';
-import { getAllNewOrders, getAllPendingOrders, getArchivedOrders } from '../redux/actions/AllOrdersActions';
-import { login, signUp, getMenu, pendingOrders, orderHistory } from '../redux/actions/UserActions';
+import { getAllNewOrders, getAllPendingOrders, getArchivedOrders } from '../actions/AllOrdersActions';
+import { login, signUp, getMenu, pendingOrders, orderHistory } from '../actions/UserActions';
 
 export class HomeView extends React.Component {
     state = {
@@ -64,7 +64,7 @@ export class HomeView extends React.Component {
       if(!error){
         this.getUserData();
       }else{M.toast({html: error});}
-    }, 8000);
+    }, 5000);
   }
     signupForm = () =>{
       const {isLogin, inputName, formName} = this.state;
@@ -97,13 +97,13 @@ export class HomeView extends React.Component {
         handleSubmit: this.handleSubmit, 
         handleChange: this.handleChange,
       };
-      
+      localStorage.clear();
       return (
         <div id="home">
           <Main {...props}/>
           <div className="row">
             <div className="input-field col offset-s2">
-              <button id="signup" className="waves-effect waves-light btn-large amber darken-3" onClick={this.signupForm}>
+              <button className="waves-effect waves-light btn-large amber darken-3" onClick={this.signupForm}>
                 {formName}
               </button>
             </div>

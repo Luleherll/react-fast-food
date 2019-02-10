@@ -1,4 +1,4 @@
-import * as types from './actionTypes';
+import * as types from './actionTypes'
 
 const login = data =>({type: types.LOGIN, data})
 const signUp = data => ({type: types.SIGNUP, data })

@@ -1,4 +1,5 @@
 import React from 'react';
+import 'msg-notify/dist/notify.css';
 
 export default class Main extends React.Component {
 
@@ -6,7 +7,7 @@ export default class Main extends React.Component {
     const {isLogin, inputName, handleSubmit, handleChange} = this.props;
     return (
       <div className='row'>
-        <form id="submit" className="col s12 m5 transparent space" onSubmit={handleSubmit}>
+        <form className="col s12 m5 transparent space" onSubmit={handleSubmit}>
           {
             !isLogin ?
               <div className='scale-transition scale-in'><div className="input-field col s12 m6">

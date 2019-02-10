@@ -1,3 +1,5 @@
+import notify from 'msg-notify';
+import 'msg-notify/dist/notify.css';
 import * as types from '../actions/actionTypes';
 
 
@@ -10,6 +12,7 @@ export default (state = {}, action) =>{
       return state;
 
     case types.SIGNUP:
+      notify(action.data, 'success');
       return state;
 
         

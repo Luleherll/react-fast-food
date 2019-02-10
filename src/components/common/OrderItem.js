@@ -62,6 +62,7 @@ export default class extends React.Component{
         img1, created_at, name,
         location, amount, quantity,
         ended_at, status},
+      handleClick
     } = this.props;
     
     const {btnName1, btnName2, data1, data2, classNames1, classNames2, dateProp} = this.state;
@@ -83,13 +84,13 @@ export default class extends React.Component{
           <button
             id="accept"
             className={classNames1}
-          >
+            onClick={()=>handleClick(data1)}>
             {btnName1}
           </button>
           <button
             id="decline"
             className={classNames2}
-          >
+            onClick={()=>handleClick(data2)}>
             {btnName2}
           </button>
         </div>

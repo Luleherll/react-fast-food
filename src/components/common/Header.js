@@ -10,9 +10,9 @@ export default class extends React.Component{
           <a href="/" className="brand-logo"><i>lule foods</i></a>
           <a href="#" data-target="mobile-demo" className="sidenav-trigger"><i className="material-icons">menu</i></a>
           <ul className="right">
-            <li><a id="newOrder" onClick={navItem1.action}>{navItem1.name}</a></li>
-            <li><a id="pendingOrder" onClick={navItem2.action}>{navItem2.name}</a></li>
-            <li><a id="doneOrder" onClick={navItem3.action}>{navItem3.name}</a></li>
+            <li><a onClick={navItem1.action}>{navItem1.name}</a></li>
+            <li><a onClick={navItem2.action}>{navItem2.name}</a></li>
+            <li><a onClick={navItem3.action}>{navItem3.name}</a></li>
             {Admin==='true' ? <li><a>Cpanel</a></li> : ''}
             <li><a onClick={logout}>Logout</a></li>
           </ul>
