@@ -1,4 +1,5 @@
 import * as types from '../actions/actionTypes';
+import M from 'materialize-css';
 
 
 export default (state = {}, action) =>{
@@ -10,6 +11,7 @@ export default (state = {}, action) =>{
       return state;
 
     case types.SIGNUP:
+      M.toast({html: action.data, classes: 'green'});
       return state;
 
         

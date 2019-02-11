@@ -55,6 +55,21 @@ export default class Main extends React.Component {
               className="waves-effect waves-light btn-large amber darken-3">SUBMIT</button>
           </div>
         </form>
+        <div className="sp-container">
+          <div className="sp-content">
+            <div className="sp-globe"></div>
+            <h5 className="frame-1">Hunger can</h5>
+            <h5 className="frame-2">not wait</h5>
+            <h5 className="frame-3">We</h5>
+            <h5 className="frame-4">have</h5>
+            <h5 className="frame-5">
+              <span>Chicken,</span>
+              <span>burgers,</span>
+              <span>and more.</span>
+            </h5>
+            <a className="sp-circle-link" href="/">Order Now</a>
+          </div>
+        </div>
       </div>
     );
   }

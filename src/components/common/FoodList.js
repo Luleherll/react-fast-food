@@ -1,6 +1,7 @@
 import React from 'react';
 import FoodItem from './FoodItem';
 import M from 'materialize-css';
+import noUiSlider from 'nouislider';
 
 class  FoodList extends React.Component {
   componentDidMount(){

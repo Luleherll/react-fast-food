@@ -1,4 +1,8 @@
 import React from 'react';
+
+function updateTextInput(val) {
+  document.getElementById('textInput').value=val; 
+}
 class FoodItem extends React.Component {
   render() {
     const {foodItem} = this.props;
@@ -11,13 +15,16 @@ class FoodItem extends React.Component {
             <img src={foodItem.img3} alt="" className="circle"/>
           </div>
         </div>
-        <div className="collapsible-body">
+        <form className="collapsible-body">
           <div className='center-align order'>Name: {foodItem.name}</div>
           <div className='center-align order'>Price: {foodItem.price}</div>
+          Quantity:
+
+          Comment: <textarea id="textarea1" className="materialize-textarea" defaultValue="As usual.."></textarea>
           <div className='center-align'>
             <button className='waves-effect waves-light btn amber darken-3 hoverable'>order now</button>
           </div>
-        </div>
+        </form>
       </li>
     );
   }

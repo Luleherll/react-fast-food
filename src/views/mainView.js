@@ -20,12 +20,12 @@ export class HomeView extends React.Component {
       password: '',
     }
 
-    // componentDidMount(){
-    //   const user = localStorage.getItem('user');
-    //   if(user){
-    //     this.getUserData();
-    //   }
-    // }
+    componentDidMount(){
+      const user = localStorage.getItem('user');
+      if(user){
+        this.getUserData();
+      }
+    }
   
   navigateTo = url => this.props.history.push(url)
   
@@ -61,7 +61,7 @@ export class HomeView extends React.Component {
     postDataThunk(url, data, actionCreator, 'post'); 
     setTimeout(() => {
       const error = localStorage.getItem('error');
-      if(!error){
+      if(error==='undefined'){
         this.getUserData();
       }else{M.toast({html: error});}
     }, 8000);
@@ -85,7 +85,7 @@ export class HomeView extends React.Component {
       }
       setTimeout(() => {
         const error = localStorage.getItem('error');
-        if(!error){
+        if(error==='undefined'){
           this.signIn('auth/login', {username, password}, login );
         }else{M.toast({html: error, classes: 'red'});}
       }, 3000);
