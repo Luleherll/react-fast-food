@@ -5,4 +5,6 @@
 <br />
 An online food delivery service built with react
 <br />
+Normal user: ``lule`` password: ``user``<br />
+Admin user: ``tanner`` password: ``pass``<br />
 Link to the live app: https://react-foods.herokuapp.com/
