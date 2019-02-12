@@ -22,11 +22,8 @@ const postDataThunk = (endpoint, data, actionCreator, method) => (dispatch) => {
   const token = localStorage.getItem('user');
   axiosInstance.defaults.headers.common.Authorization = 'Bearer '.concat(token);
   return axiosInstance[method](endpoint, data).then((response) => {
-    console.log(response);
     dispatch(actionCreator(response.data));
-  }).catch(err => {
-    console.log(err)
-    dispatch(errorOccurred(err))});
+  }).catch(err => dispatch(errorOccurred(err)));
 };
 
 

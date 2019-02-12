@@ -22,10 +22,14 @@ export class HomeView extends React.Component {
     }
 
     componentDidMount(){
-      // const user = localStorage.getItem('user');
-      // if(user){
-      //   this.getUserData();
-      // }
+      const user = localStorage.getItem('user');
+      if(user){
+        this.setState({loader: ''});
+        setTimeout(() => {
+          this.getUserData();
+        }, 3000);
+        
+      }
     }
   
   navigateTo = url => this.props.history.push(url)
