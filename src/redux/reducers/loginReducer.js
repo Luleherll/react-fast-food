@@ -11,7 +11,7 @@ export default (state = {}, action) =>{
       return state;
 
     case types.SIGNUP:
-      M.toast({html: action.data, classes: 'green'});
+      M.toast({html: action.data.msg, classes: 'green'});
       return state;
 
         

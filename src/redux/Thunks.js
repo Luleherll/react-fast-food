@@ -24,7 +24,9 @@ const postDataThunk = (endpoint, data, actionCreator, method) => (dispatch) => {
   return axiosInstance[method](endpoint, data).then((response) => {
     console.log(response);
     dispatch(actionCreator(response.data));
-  }).catch(err => dispatch(errorOccurred(err)));
+  }).catch(err => {
+    console.log(err)
+    dispatch(errorOccurred(err))});
 };
 
 

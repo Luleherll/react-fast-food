@@ -12,20 +12,24 @@ export default class Main extends React.Component {
               <div className='scale-transition scale-in'><div className="input-field col s12 m6">
                 <input
                   onChange={handleChange('email')}
+                  required
                   placeholder="john@example.com" id="email" type="email" className="validate" />
               </div>
               <div className="input-field col s12 m6">
                 <input
+                  required
                   onChange={handleChange('username')}
                   placeholder="username" id="username" type="text" className="validate" />
               </div>
               <div className="input-field col s6">
                 <input
+                  required
                   onChange={handleChange('key_point')}
                   placeholder="key point" id="keyPoint" type="text" className="validate" />
               </div>
               <div className="input-field col s6">
                 <input
+                  required
                   onChange={handleChange('location')}
                   placeholder="location" id="location" type="text" className="validate" />
               </div></div>
@@ -33,6 +37,7 @@ export default class Main extends React.Component {
           }
           <div className="input-field col s9">
             <input
+              required
               placeholder={inputName}
               onChange={handleChange(inputName)}
               id="username"
@@ -41,6 +46,7 @@ export default class Main extends React.Component {
           </div>
           <div className="input-field col s9">
             <input
+              required
               onChange={handleChange('password')}
               placeholder="password"
               id="password"
@@ -51,6 +57,7 @@ export default class Main extends React.Component {
           </div>
           <div className="input-field col offset-s4">
             <button 
+              required
               type="submit"
               className="waves-effect waves-light btn-large amber darken-3">SUBMIT</button>
           </div>
