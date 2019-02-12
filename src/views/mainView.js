@@ -10,6 +10,7 @@ import { login, signUp, getMenu, pendingOrders, orderHistory } from '../redux/ac
 export class HomeView extends React.Component {
     state = {
       isLogin: true,
+      loader: 'hide',
       inputName: 'username',
       formName: 'Create Account',
       email: '',
@@ -21,10 +22,10 @@ export class HomeView extends React.Component {
     }
 
     componentDidMount(){
-      const user = localStorage.getItem('user');
-      if(user){
-        this.getUserData();
-      }
+      // const user = localStorage.getItem('user');
+      // if(user){
+      //   this.getUserData();
+      // }
     }
   
   navigateTo = url => this.props.history.push(url)
@@ -58,12 +59,17 @@ export class HomeView extends React.Component {
     this.setState({[param]: e.target.value });};
   signIn = (url, data, actionCreator) => {
     const { actions: { postDataThunk }} = this.props;
-    postDataThunk(url, data, actionCreator, 'post'); 
+    postDataThunk(url, data, actionCreator, 'post');
+    this.setState({loader: ''});
     setTimeout(() => {
       const error = localStorage.getItem('error');
-      if(error==='undefined'){
+      if(!error){
         this.getUserData();
-      }else{M.toast({html: error});}
+      }else{
+        this.setState({loader: 'hide'});
+        M.toast({html: error, classes: 'red'});
+        localStorage.removeItem('error');
+      }
     }, 8000);
   }
     signupForm = () =>{
@@ -85,13 +91,17 @@ export class HomeView extends React.Component {
       }
       setTimeout(() => {
         const error = localStorage.getItem('error');
-        if(error==='undefined'){
+        if(!error){
           this.signIn('auth/login', {username, password}, login );
-        }else{M.toast({html: error, classes: 'red'});}
+        }else{
+          this.setState({loader: 'hide'});
+          M.toast({html: error, classes: 'red'});
+          localStorage.removeItem('error');
+        }
       }, 3000);
     }
     render () {
-      const {isLogin, inputName, formName} = this.state;
+      const {isLogin, inputName, formName, loader} = this.state;
       const props = {
         isLogin, inputName, 
         handleSubmit: this.handleSubmit, 
@@ -100,6 +110,14 @@ export class HomeView extends React.Component {
       
       return (
         <div id="home">
+          <div id='overlay' className={loader}>
+            <div className='container'>
+              <div className="progress">
+                <div className="indeterminate amber"></div>
+              </div>
+            </div>
+          </div>
+           
           <Main {...props}/>
           <div className="row">
             <div className="input-field col offset-s2">
