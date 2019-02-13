@@ -5,6 +5,7 @@ import { bindActionCreators } from 'redux';
 import Header from '../components/common/Header';
 import AdminDashboard from '../components/admin';
 import UserDashboard from '../components/customer';
+import M from 'materialize-css';
 
 
 export class UserView extends React.Component{
@@ -19,6 +20,10 @@ export class UserView extends React.Component{
     }
 
     componentDidMount(){
+      document.addEventListener('click', () => {
+        let elems = document.querySelectorAll('.sidenav');
+        M.Sidenav.init(elems);
+      });
       const Admin = localStorage.getItem('Admin');
       if (Admin==='true') {
         this.setState({
@@ -29,7 +34,6 @@ export class UserView extends React.Component{
           }
         });
       }
-      
     }
 
     displayPage = (prop, page) => this.setState({ [prop]: this.props[page] || [] });
