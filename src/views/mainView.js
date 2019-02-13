@@ -102,7 +102,7 @@ export class HomeView extends React.Component {
           M.toast({html: error, classes: 'red'});
           localStorage.removeItem('error');
         }
-      }, 3000);
+      }, 5000);
     }
     render () {
       const {isLogin, inputName, formName, loader} = this.state;
